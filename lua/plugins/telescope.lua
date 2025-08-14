@@ -52,12 +52,15 @@ return {
     pcall(telescope.load_extension, 'notify')
 
     -- Keymaps
-    local keymap = vim.keymap.set
+    local function keymap(mode, key, fn, opts)
+      vim.keymap.set(mode, key, fn, { desc = '[Search]' .. opts.desc })
+    end
+
     local builtin = require 'telescope.builtin'
-    keymap('n', '<leader>sf', builtin.find_files, { desc = 'Find Files' })
-    keymap('n', '<leader>sk', builtin.keymaps, { desc = 'Search Keymaps' })
+    keymap('n', '<leader>sf', builtin.find_files, { desc = ' Files' })
+    keymap('n', '<leader>sk', builtin.keymaps, { desc = ' Keymaps' })
     keymap('n', '<leader>sn', function()
       require('telescope').extensions.notify.notify()
-    end, { desc = 'Search notify history' })
+    end, { desc = ' notify history' })
   end,
 }
