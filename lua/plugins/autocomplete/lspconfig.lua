@@ -108,6 +108,13 @@ return {
       opts.servers.astro = {}
       opts.servers.tailwindcss = {}
 
+      if opts.servers.tailwindcss.filetypes ~= nil and #opts.servers.tailwindcss.filetypes > 0 then
+        for i = #opts.servers.tailwindcss.filetypes, 1, -1 do
+          if opts.servers.tailwindcss.filetypes[i] == 'javascript' or opts.servers.tailwindcss.filetypes[i] == 'typescript' then
+            table.remove(opts.servers.tailwindcss.filetypes, i)
+          end
+        end
+      end
       return opts
     end,
     config = function(_, opts)

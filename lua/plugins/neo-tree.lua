@@ -8,19 +8,11 @@ return {
   },
   lazy = false, -- penting: biar load di startup
   priority = 1000,
-  config = function(_, opts)
-    require('neo-tree').setup(opts)
-
-    -- Buka Neo-tree otomatis saat masuk Vim
-    vim.api.nvim_create_autocmd('VimEnter', {
-      callback = function()
-        -- Buka di sisi kiri
-        vim.cmd 'Neotree show right'
-      end,
-    })
-  end,
   opts = {
-    window = { width = 30 },
+    window = {
+      position = 'right',
+      width = 25,
+    },
     default_component_configs = {
       indent = { indent_size = 1, padding = 0 },
       icon = { padding = ' ' },
