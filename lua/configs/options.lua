@@ -6,7 +6,6 @@ vim.diagnostic.config {
   severity_sort = true, -- Urutkan berdasarkan tingkat error
 }
 
--- Matikan netrw bawaan Neovim
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.lazyvim_rust_diagnostics = 'rust-analyzer'
