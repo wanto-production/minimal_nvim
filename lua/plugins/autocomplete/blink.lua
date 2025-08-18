@@ -15,21 +15,19 @@ return {
           end
           return 'make install_jsregexp'
         end)(),
-        dependencies = {
-          {
-            'rafamadriz/friendly-snippets',
-            event = 'InsertEnter',
-            config = function()
-              require('luasnip.loaders.from_vscode').lazy_load()
-            end,
-          },
-        },
       },
       {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
         config = function()
           require('nvim-autopairs').setup {}
+        end,
+      },
+      {
+        'rafamadriz/friendly-snippets',
+        event = 'InsertEnter',
+        config = function()
+          require('luasnip.loaders.from_vscode').lazy_load()
         end,
       },
       { 'folke/lazydev.nvim', ft = 'lua' },
