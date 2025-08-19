@@ -37,7 +37,6 @@ return {
       }
       opts.auto_install = true
       opts.highlight = { enable = true }
-      opts.rainbow = { enable = true }
 
       -- Angular HTML parser override
       vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {
