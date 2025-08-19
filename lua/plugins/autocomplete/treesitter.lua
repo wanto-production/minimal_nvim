@@ -115,6 +115,7 @@ return {
             if name_node then
               local fn_name = vim.treesitter.get_node_text(name_node, bufnr)
 
+              ---@diagnostic disable
               local end_row, end_col = parent:end_()
               local line = vim.api.nvim_buf_get_lines(bufnr, end_row, end_row + 1, false)[1]
               if line then
