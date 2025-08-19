@@ -67,6 +67,7 @@ return {
         local root = tree:root()
 
         -- Query sederhana untuk function (Lua/JS/TS/Rust)
+
         local query_strings = {
           lua = [[
             (function_declaration
@@ -78,18 +79,19 @@ return {
               name: (identifier) @fn_name
               body: (statement_block) @fn_body)
           ]],
+
           typescript = [[
             (function_declaration
               name: (identifier) @fn_name
               body: (statement_block) @fn_body)
           ]],
+
           rust = [[
             (function_item
               name: (identifier) @fn_name
               body: (block) @fn_body)
-          ]],
+        ]],
         }
-
         local query_string = query_strings[lang]
         if not query_string then
           return
