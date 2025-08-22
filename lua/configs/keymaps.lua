@@ -24,7 +24,6 @@ vim.keymap.set({ 'n', 'v' }, 'd', '"_d', { noremap = true })
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', function()
   if vim.bo.modified then
     vim.cmd 'write'
-    vim.notify('file saved', vim.log.levels.INFO, { title = 'files' })
   else
     vim.notify('nothing to save', vim.log.levels.WARN, { title = 'files' })
   end
