@@ -12,115 +12,105 @@ return {
     dependencies = {
       'b0o/schemastore.nvim',
     },
-    opts = function(_, opts)
-      opts.servers = opts.servers or {}
+    config = function()
+      local lspconfig = require 'lspconfig'
 
-      opts.servers.lua_ls = {
-        settings = {
-          Lua = {
-            runtime = {
-              version = 'LuaJIT', -- versi Lua untuk Neovim
+      ---@alias LspServerConfig { cmd?: string[] } | lspconfig.Config
+      ---@type table<string, LspServerConfig>
+      local servers = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              runtime = { version = 'LuaJIT' },
+              diagnostics = { globals = { 'vim' } },
+              workspace = {
+                library = vim.api.nvim_get_runtime_file('', true),
+                checkThirdParty = false,
+              },
+              telemetry = { enable = false },
             },
-            diagnostics = {
-              globals = { 'vim' }, -- menghindari peringatan "undefined global 'vim'"
+          },
+        },
+
+        vtsls = {
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'javascript.jsx',
+            'typescript',
+            'typescriptreact',
+            'typescript.tsx',
+          },
+          settings = {
+            complete_function_calls = true,
+            vtsls = {
+              enableMoveToFileCodeAction = true,
+              autoUseWorkspaceTsdk = true,
+              experimental = {
+                maxInlayHintLength = 30,
+                completion = { enableServerSideFuzzyMatch = true },
+              },
+              tsserver = {
+                globalPlugins = {
+                  {
+                    name = 'typescript-svelte-plugin',
+                    location = get_pkg_path('svelte-language-server', '/node_modules/typescript-svelte-plugin'),
+                    enableForWorkspaceTypeScriptVersions = true,
+                  },
+                  {
+                    name = '@astrojs/ts-plugin',
+                    location = get_pkg_path('astro-language-server', '/node_modules/@astrojs/ts-plugin'),
+                    enableForWorkspaceTypeScriptVersions = true,
+                  },
+                },
+              },
             },
+            typescript = {
+              updateImportsOnFileMove = { enabled = 'always' },
+              suggest = { completeFunctionCalls = true },
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                parameterNames = { enabled = 'literals' },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = false },
+              },
+            },
+          },
+        },
+
+        svelte = {
+          capabilities = {
             workspace = {
-              library = vim.api.nvim_get_runtime_file('', true),
-              checkThirdParty = false,
-            },
-            telemetry = {
-              enable = false,
+              didChangeWatchedFiles = { dynamicRegistration = false },
             },
           },
         },
+
+        jsonls = {
+          settings = {
+            json = {
+              schemas = require('schemastore').json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
+
+        astro = {},
+        tailwindcss = {},
       }
 
-      opts.servers.vtsls = {
-        filetypes = {
-          'javascript',
-          'javascriptreact',
-          'javascript.jsx',
-          'typescript',
-          'typescriptreact',
-          'typescript.tsx',
-        },
-        settings = {
-          complete_function_calls = true,
-          vtsls = {
-            enableMoveToFileCodeAction = true,
-            autoUseWorkspaceTsdk = true,
-            experimental = {
-              maxInlayHintLength = 30,
-              completion = {
-                enableServerSideFuzzyMatch = true,
-              },
-            },
-            tsserver = {
-              globalPlugins = {
-                {
-                  name = 'typescript-svelte-plugin',
-                  location = get_pkg_path('svelte-language-server', '/node_modules/typescript-svelte-plugin'),
-                  enableForWorkspaceTypeScriptVersions = true,
-                },
-                {
-                  name = '@astrojs/ts-plugin',
-                  location = get_pkg_path('astro-language-server', '/node_modules/@astrojs/ts-plugin'),
-                  enableForWorkspaceTypeScriptVersions = true,
-                },
-              },
-            },
-          },
-          typescript = {
-            updateImportsOnFileMove = { enabled = 'always' },
-            suggest = {
-              completeFunctionCalls = true,
-            },
-            inlayHints = {
-              enumMemberValues = { enabled = true },
-              functionLikeReturnTypes = { enabled = true },
-              parameterNames = { enabled = 'literals' },
-              parameterTypes = { enabled = true },
-              propertyDeclarationTypes = { enabled = true },
-              variableTypes = { enabled = false },
-            },
-          },
-        },
-      }
-
-      -- svelte
-      opts.servers.svelte = {
-        capabilities = {
-          workspace = {
-            didChangeWatchedFiles = vim.fn.has 'nvim-0.10' == 0 and { dynamicRegistration = true },
-          },
-        },
-      }
-
-      opts.servers.jsonls = {
-        settings = {
-          json = {
-            schemas = require('schemastore').json.schemas(),
-            validate = { enable = true },
-          },
-        },
-      }
-
-      opts.servers.astro = {}
-      opts.servers.tailwindcss = {}
-
-      if opts.servers.tailwindcss.filetypes ~= nil and #opts.servers.tailwindcss.filetypes > 0 then
-        for i = #opts.servers.tailwindcss.filetypes, 1, -1 do
-          if opts.servers.tailwindcss.filetypes[i] == 'javascript' or opts.servers.tailwindcss.filetypes[i] == 'typescript' then
-            table.remove(opts.servers.tailwindcss.filetypes, i)
+      -- hapus filetypes tertentu dari tailwindcss
+      if servers.tailwindcss.filetypes ~= nil and #servers.tailwindcss.filetypes > 0 then
+        for i = #servers.tailwindcss.filetypes, 1, -1 do
+          if servers.tailwindcss.filetypes[i] == 'javascript' or servers.tailwindcss.filetypes[i] == 'typescript' then
+            table.remove(servers.tailwindcss.filetypes, i)
           end
         end
       end
-      return opts
-    end,
-    config = function(_, opts)
-      local lspconfig = require 'lspconfig'
 
-      for server, config in pairs(opts.servers) do
+      for server, config in pairs(servers) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
