@@ -74,23 +74,11 @@ return {
               name: (identifier) @fn_name
               body: (block) @fn_body)
           ]],
-          javascript = [[
-            (function_declaration
-              name: (identifier) @fn_name
-              body: (statement_block) @fn_body)
-          ]],
-
-          typescript = [[
-            (function_declaration
-              name: (identifier) @fn_name
-              body: (statement_block) @fn_body)
-          ]],
-
           rust = [[
             (function_item
               name: (identifier) @fn_name
               body: (block) @fn_body)
-        ]],
+          ]],
         }
         local query_string = query_strings[lang]
         if not query_string then

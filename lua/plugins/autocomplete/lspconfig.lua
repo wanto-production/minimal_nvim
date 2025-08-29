@@ -101,15 +101,6 @@ return {
         tailwindcss = {},
       }
 
-      -- hapus filetypes tertentu dari tailwindcss
-      if servers.tailwindcss.filetypes ~= nil and #servers.tailwindcss.filetypes > 0 then
-        for i = #servers.tailwindcss.filetypes, 1, -1 do
-          if servers.tailwindcss.filetypes[i] == 'javascript' or servers.tailwindcss.filetypes[i] == 'typescript' then
-            table.remove(servers.tailwindcss.filetypes, i)
-          end
-        end
-      end
-
       for server, config in pairs(servers) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
