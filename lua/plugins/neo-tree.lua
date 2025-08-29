@@ -25,13 +25,14 @@ return {
           hide_dotfiles = false,
           hide_gitignored = false,
         },
-        follow_current_file = { enabled = true },
+        follow_current_file = { enabled = false },
         use_libuv_file_watcher = true,
+        hijack_netrw_behavior = 'open_default', -- ganti netrw biar selalu konsisten
       },
     }
 
     vim.keymap.set('n', '<leader>e', function()
-      require('neo-tree.command').execute { toggle = true, dir = vim.fn.expand '%:p:h' }
-    end, { desc = 'Toggle Neo-tree at file dir' })
+      require('neo-tree.command').execute { toggle = true }
+    end, { desc = 'Toggle Neo-tree' })
   end,
 }
