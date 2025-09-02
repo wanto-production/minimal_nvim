@@ -3,6 +3,7 @@ return {
   event = { 'BufEnter' },
   dependencies = {
     'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   config = function()
@@ -45,11 +46,17 @@ return {
           end,
         },
       },
+      extensions = {
+        ['ui-select'] = {
+          require('telescope.themes').get_dropdown {},
+        },
+      },
     }
 
     -- Load FZF extension (biar search lebih cepat & akurat)
     pcall(telescope.load_extension, 'fzf')
     pcall(telescope.load_extension, 'notify')
+    pcall(telescope.load_extension, 'ui-select')
 
     -- Keymaps
     local function keymap(mode, key, fn, opts)

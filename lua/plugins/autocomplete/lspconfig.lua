@@ -40,6 +40,7 @@ return {
             'typescript',
             'typescriptreact',
             'typescript.tsx',
+            'vue',
           },
           settings = {
             complete_function_calls = true,
@@ -60,6 +61,13 @@ return {
                   {
                     name = '@astrojs/ts-plugin',
                     location = get_pkg_path('astro-language-server', '/node_modules/@astrojs/ts-plugin'),
+                    enableForWorkspaceTypeScriptVersions = true,
+                  },
+                  {
+                    name = '@vue/typescript-plugin',
+                    location = get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
+                    languages = { 'vue' },
+                    configNamespace = 'typescript',
                     enableForWorkspaceTypeScriptVersions = true,
                   },
                 },
@@ -92,6 +100,15 @@ return {
           settings = {
             json = {
               schemas = require('schemastore').json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
+
+        yamlls = {
+          settings = {
+            yaml = {
+              schemas = require('schemastore').yaml.schemas(),
               validate = { enable = true },
             },
           },
