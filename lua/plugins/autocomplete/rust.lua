@@ -75,16 +75,22 @@ return {
       -- cek kalau mason dan codelldb tersedia
       local ok, mason_registry = pcall(require, 'mason-registry')
       if ok and mason_registry.is_installed 'codelldb' then
-        ---@diagnostic disable-next-line: undefined-field
-        local package_path = mason_registry.get_package('codelldb'):get_install_path()
-        local codelldb = package_path .. '/extension/adapter/codelldb'
-        local library_path = package_path .. '/extension/lldb/lib/liblldb.dylib'
-        if vim.fn.has 'linux' == 1 then
-          library_path = package_path .. '/extension/lldb/lib/liblldb.so'
+        local codelldb_pkg = mason_registry.get_package 'codelldb'
+
+        if not codelldb_pkg:is_installed() then
+          vim.notify('codelldb is not installed', vim.log.levels.ERROR)
+        else
+          local package_path = vim.fn.expand '$MASON/packages/codelldb'
+          local codelldb = package_path .. '/extension/adapter/codelldb'
+          local library_path = package_path .. '/extension/lldb/lib/liblldb.dylib'
+          if vim.fn.has 'linux' == 1 then
+            library_path = package_path .. '/extension/lldb/lib/liblldb.so'
+          end
+
+          rust_opts.dap = {
+            adapter = require('rustaceanvim.config').get_codelldb_adapter(codelldb, library_path),
+          }
         end
-        rust_opts.dap = {
-          adapter = require('rustaceanvim.config').get_codelldb_adapter(codelldb, library_path),
-        }
       end
 
       -- peringatan kalau rust-analyzer belum ada
