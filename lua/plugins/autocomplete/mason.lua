@@ -29,7 +29,6 @@ return {
         ensure_installed = {
           --server
           'lua_ls',
-          'vue_ls',
           'vtsls',
           'html',
           'cssls',
