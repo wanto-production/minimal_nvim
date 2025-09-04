@@ -14,6 +14,7 @@ return {
     },
     config = function()
       local lspconfig = require 'lspconfig'
+      vim.lsp.enable { 'vue_ls' }
 
       ---@alias LspServerConfig { cmd?: string[] } | lspconfig.Config
       ---@type table<string, LspServerConfig>
@@ -117,6 +118,14 @@ return {
         astro = {},
         tailwindcss = {},
       }
+
+      vim.lsp.config('vue_ls', {
+        settings = {
+          vue = {
+            hybride = true,
+          },
+        },
+      })
 
       for server, config in pairs(servers) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
