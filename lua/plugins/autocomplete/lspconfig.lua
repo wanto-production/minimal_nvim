@@ -114,9 +114,14 @@ return {
         vue_ls = {
           settings = {
             vue = {
-              hybride = true,
+              hybrideMode = true,
             },
           },
+        },
+
+        intelephense = {
+          filetypes = { 'php' },
+          root_markers = { 'composer.json', '.git' },
         },
 
         astro = {},

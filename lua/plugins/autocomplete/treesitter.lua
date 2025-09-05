@@ -34,6 +34,7 @@ return {
         'rust',
         'ron',
         'regex',
+        'php',
       }
       opts.auto_install = true
       opts.highlight = { enable = true }

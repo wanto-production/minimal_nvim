@@ -31,6 +31,7 @@ require('lazy').setup({
     { import = 'plugins' },
     { import = 'plugins.ui' },
     { import = 'plugins.autocomplete' },
+    { import = 'plugins.framework_plugin' },
   },
 }, {
   ui = {

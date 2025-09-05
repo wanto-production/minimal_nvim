@@ -17,8 +17,8 @@ return {
         sorting_strategy = 'ascending',
         layout_config = {
           horizontal = {
-            preview_width = 0.5,
-            width = 0.5,
+            preview_width = 0.6,
+            width = 0.6,
           },
           vertical = { mirror = false },
           prompt_position = 'top',
@@ -57,6 +57,7 @@ return {
     pcall(telescope.load_extension, 'fzf')
     pcall(telescope.load_extension, 'notify')
     pcall(telescope.load_extension, 'ui-select')
+    pcall(telescope.load_extension, 'laravel')
 
     -- Keymaps
     local function keymap(mode, key, fn, opts)

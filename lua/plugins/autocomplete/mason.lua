@@ -36,7 +36,7 @@ return {
           'astro',
           'tailwindcss',
           'yamlls',
-
+          'intelephense',
           --other
           'codelldb',
           'stylua',
@@ -44,6 +44,7 @@ return {
           'eslint_d',
         },
         auto_update = true,
+        auto_install = true,
         run_on_start = true,
         integrations = {
           ['mason-lspconfig'] = true,
