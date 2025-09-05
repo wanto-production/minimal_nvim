@@ -3,7 +3,6 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     dependencies = {
       'williamboman/mason-lspconfig.nvim',
-      'neovim/nvim-lspconfig',
       'williamboman/mason.nvim',
     },
     event = { 'BufReadPre', 'BufNewFile' }, -- load sebelum buffer dibuka

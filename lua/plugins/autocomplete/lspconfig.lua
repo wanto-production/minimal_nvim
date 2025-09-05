@@ -13,11 +13,7 @@ return {
       'b0o/schemastore.nvim',
     },
     config = function()
-      local lspconfig = require 'lspconfig'
-      vim.lsp.enable { 'vue_ls' }
-
-      ---@alias LspServerConfig { cmd?: string[] } | lspconfig.Config
-      ---@type table<string, LspServerConfig>
+      ---@type vim.lsp.Config
       local servers = {
         lua_ls = {
           settings = {
@@ -115,21 +111,22 @@ return {
           },
         },
 
+        vue_ls = {
+          settings = {
+            vue = {
+              hybride = true,
+            },
+          },
+        },
+
         astro = {},
         tailwindcss = {},
       }
 
-      vim.lsp.config('vue_ls', {
-        settings = {
-          vue = {
-            hybride = true,
-          },
-        },
-      })
-
       for server, config in pairs(servers) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
+        vim.lsp.config[server] = config
+        vim.lsp.enable(server)
       end
     end,
   },
