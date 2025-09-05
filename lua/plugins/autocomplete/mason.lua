@@ -29,6 +29,7 @@ return {
         ensure_installed = {
           --server
           'lua_ls',
+          'taplo',
           'vtsls',
           'html',
           'cssls',
