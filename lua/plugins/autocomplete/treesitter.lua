@@ -23,6 +23,7 @@ return {
         'html',
         'bash',
         'c',
+        'c_sharp',
         'diff',
         'lua',
         'luadoc',

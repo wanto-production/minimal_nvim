@@ -1,9 +1,9 @@
 return {
   {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    'williamboman/mason.nvim',
     dependencies = {
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'williamboman/mason.nvim',
     },
     event = { 'BufReadPre', 'BufNewFile' }, -- load sebelum buffer dibuka
     build = ':MasonUpdate',
@@ -22,9 +22,10 @@ return {
             package_uninstalled = '✗',
           },
         },
-      }
-
-      require('mason-tool-installer').setup {
+        registries = {
+          'github:mason-org/mason-registry',
+          'github:Crashdummyy/mason-registry',
+        },
         ensure_installed = {
           --server
           'lua_ls',
@@ -36,7 +37,6 @@ return {
           'astro',
           'tailwindcss',
           'yamlls',
-          'intelephense',
           --other
           'codelldb',
           'stylua',
@@ -46,11 +46,6 @@ return {
         auto_update = true,
         auto_install = true,
         run_on_start = true,
-        integrations = {
-          ['mason-lspconfig'] = true,
-          ['mason-null-ls'] = true,
-          ['mason-nvim-dap'] = true,
-        },
       }
     end,
   },
