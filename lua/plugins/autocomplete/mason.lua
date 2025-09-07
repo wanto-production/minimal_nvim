@@ -39,6 +39,7 @@ return {
           'tailwindcss',
           'yamlls',
           'intelephense',
+          'emmet_ls',
           --other
           'codelldb',
           'stylua',
