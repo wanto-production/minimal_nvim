@@ -38,6 +38,7 @@ return {
           'astro',
           'tailwindcss',
           'yamlls',
+          'intelephense',
           --other
           'codelldb',
           'stylua',
