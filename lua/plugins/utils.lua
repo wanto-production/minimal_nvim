@@ -24,6 +24,9 @@ return {
     event = 'VimEnter',
     opts = {
       delay = 0,
+      -- trigger bawaan, biar which-key tahu kapan muncul
+      triggers = { '<leader>', 'g', ']', '[' },
+
       icons = {
         mappings = vim.g.have_nerd_font,
         keys = vim.g.have_nerd_font and {} or {
@@ -57,6 +60,8 @@ return {
           F12 = '<F12>',
         },
       },
+
+      -- pakai spec, bukan panggil manual di keymap
       spec = {
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
