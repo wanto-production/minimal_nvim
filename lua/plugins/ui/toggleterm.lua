@@ -14,6 +14,12 @@ return {
         border = 'curved', -- bisa: single, double, shadow, curved
         winblend = 3,
       },
+      winbar = {
+        enabled = true,
+        name_formatter = function(term) --  term: Terminal
+          return term.name
+        end,
+      },
     }
   end,
 }

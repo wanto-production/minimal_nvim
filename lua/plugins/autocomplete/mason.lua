@@ -1,11 +1,7 @@
 return {
+  -- Mason core
   {
     'williamboman/mason.nvim',
-    dependencies = {
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-      'williamboman/mason-lspconfig.nvim',
-    },
-    event = { 'BufReadPre', 'BufNewFile' }, -- load sebelum buffer dibuka
     build = ':MasonUpdate',
     config = function()
       require('mason').setup {
@@ -14,7 +10,7 @@ return {
           height = 0.8,
           width = 0.8,
           keymaps = {
-            apply_language_filter = 'f', -- ini defaultnya
+            apply_language_filter = 'f',
           },
           icons = {
             package_installed = '✓',
@@ -26,8 +22,21 @@ return {
           'github:mason-org/mason-registry',
           'github:Crashdummyy/mason-registry',
         },
+      }
+    end,
+  },
+
+  -- Mason LSP Config untuk auto install LSP servers
+  {
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'neovim/nvim-lspconfig',
+    },
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      require('mason-lspconfig').setup {
         ensure_installed = {
-          --server
           'lua_ls',
           'taplo',
           'vtsls',
@@ -40,15 +49,36 @@ return {
           'yamlls',
           'intelephense',
           'emmet_ls',
-          --other
+        },
+        automatic_installation = true,
+      }
+    end,
+  },
+
+  -- Mason Tool Installer untuk tools lainnya (formatters, linters, DAP)
+  {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    dependencies = {
+      'williamboman/mason.nvim',
+    },
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      require('mason-tool-installer').setup {
+        ensure_installed = {
+          -- Debug Adapters
           'codelldb',
+
+          -- Formatters
           'stylua',
           'prettierd',
+
+          -- Linters
           'eslint_d',
         },
         auto_update = true,
-        auto_install = true,
         run_on_start = true,
+        start_delay = 3000, -- delay 3 detik setelah nvim start
+        debounce_hours = 5, -- check update setiap 5 jam
       }
     end,
   },
