@@ -10,6 +10,12 @@ return {
   priority = 1000,
   config = function()
     require('neo-tree').setup {
+      sources = { "filesystem", "buffers", "git_status" },
+      git_status = {
+        window = {
+          position = "float",
+        },
+      },
       window = {
         position = 'right',
         width = 25,
