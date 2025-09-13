@@ -49,6 +49,7 @@ return {
           'yamlls',
           'intelephense',
           'emmet_ls',
+          'angularls',
         },
         automatic_installation = true,
       }
