@@ -67,7 +67,6 @@ return {
       require('mason-tool-installer').setup {
         ensure_installed = {
           -- Debug Adapters
-          'codelldb',
 
           -- Formatters
           'stylua',
