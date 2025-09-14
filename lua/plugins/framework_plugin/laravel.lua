@@ -79,7 +79,7 @@ return {
       lsp_server = 'intelephense', -- "phpactor | intelephense"
       features = {
         pickers = {
-          provider = 'snacks', -- "snacks | telescope | fzf-lua | ui-select"
+          provider = 'telescope', -- "snacks | telescope | fzf-lua | ui-select"
         },
       },
     }
