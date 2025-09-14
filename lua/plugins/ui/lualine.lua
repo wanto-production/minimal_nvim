@@ -46,8 +46,8 @@ return {
         lualine_z = { 'location' },
       },
       inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch' },
         lualine_c = { 'filename' },
         lualine_x = { 'location' },
         lualine_y = {},
