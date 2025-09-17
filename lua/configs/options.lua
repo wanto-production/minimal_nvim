@@ -13,6 +13,9 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = false
 
+vim.opt.wrap = false
+vim.opt.sidescroll = 1
+vim.opt.sidescrolloff = 5
 vim.opt.laststatus = 3 -- global statusline (opsional, supaya lualine konsisten)
 vim.opt.tabstop = 2 -- Lebar tab secara visual (berapa spasi)
 vim.opt.shiftwidth = 2 -- Lebar indentasi saat << atau >>
