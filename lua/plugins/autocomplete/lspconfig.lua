@@ -6,6 +6,11 @@ local function get_pkg_path(pkg, subpath)
   return base
 end
 
+---@param list {}
+local function root_pattern(list)
+  return vim.fs.dirname(vim.fs.find(list, { upward = true })[1])
+end
+
 return {
   {
     'neovim/nvim-lspconfig',
@@ -130,7 +135,6 @@ return {
 
         intelephense = {},
         astro = {},
-        angularls = {},
       }
 
       --- NOTE: typescript plugins
@@ -153,11 +157,6 @@ return {
           languages = { 'vue' },
           configNamespace = 'typescript',
           enableForWorkspaceTypeScriptVersions = true,
-        },
-        {
-          name = '@angular/language-server',
-          location = get_pkg_path('angular-language-server', '/node_modules/@angular/language-server'),
-          enableForWorkspaceTypeScriptVersions = false,
         },
       })
 
