@@ -65,7 +65,11 @@ return {
     end
 
     local builtin = require 'telescope.builtin'
-    keymap('n', '<leader>sf', builtin.find_files, { desc = ' Files' })
+
+    keymap('n', 'gr', builtin.lsp_references, { noremap = true, silent = true, desc = 'LSP References' }) -- references
+    keymap('n', 'gd', builtin.lsp_definitions, { noremap = true, silent = true, desc = 'LSP Definitions' }) -- lompat ke definisi
+    keymap('n', 'gi', builtin.lsp_implementations, { noremap = true, silent = true, desc = 'LSP Implementations' }) -- lihat implementasi
+    keymap('n', 'gt', builtin.lsp_type_definitions, { noremap = true, silent = true, desc = 'LSP Type Definitions' }) -- lihat type    keymap('n', '<leader>sf', builtin.find_files, { desc = ' Files' })
     keymap('n', '<leader>sk', builtin.keymaps, { desc = ' Keymaps' })
     keymap('n', '<leader>sn', function()
       require('telescope').extensions.notify.notify()
