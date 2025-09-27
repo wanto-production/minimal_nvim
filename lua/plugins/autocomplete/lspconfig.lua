@@ -124,10 +124,6 @@ return {
           end,
         },
 
-        emmet_ls = {
-          filetypes = { 'html', 'typescriptreact', 'javascriptreact' },
-        },
-
         intelephense = {},
         astro = {},
       }

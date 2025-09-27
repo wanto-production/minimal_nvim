@@ -40,7 +40,6 @@ return {
           'lua_ls',
           'taplo',
           'vtsls',
-          'html',
           'cssls',
           'jsonls',
           'svelte',
@@ -48,7 +47,6 @@ return {
           'tailwindcss',
           'yamlls',
           'intelephense',
-          'emmet_ls',
         },
         automatic_installation = true,
       }
