@@ -1,115 +1,46 @@
-if true then
-  return {}
-end
-
 return {
   {
-    'Saecki/crates.nvim',
-    event = { 'BufRead Cargo.toml' },
+    'mrcjkb/rustaceanvim',
+    version = '^4',
+    ft = 'rust',
+    lazy = true,
+    init = function()
+      -- Aktifkan inlay hints global (sekali saja)
+      vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('RustInlayHints', { clear = true }),
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client and client.name == 'rust-analyzer' then
+            vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+          end
+        end,
+      })
+    end,
     opts = {
-      completion = {
-        crates = {
-          enabled = true,
-        },
-      },
-      lsp = {
-        enabled = true,
-        actions = true,
-        completion = true,
-        hover = true,
+      server = {
+        on_attach = function(_, bufnr)
+          -- Format on save (tanpa clear berulang)
+          local group = vim.api.nvim_create_augroup('RustFormat', { clear = false })
+          vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            buffer = bufnr,
+            group = group,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = bufnr, async = true })
+            end,
+          })
+        end,
       },
     },
   },
-
   {
-    'mrcjkb/rustaceanvim',
-    version = vim.fn.has 'nvim-0.10.0' == 0 and '^4' or false,
-    ft = { 'rust' },
-    opts = function()
-      local rust_opts = {
-        server = {
-          on_attach = function(_, bufnr)
-            vim.keymap.set('n', '<leader>cR', function()
-              vim.cmd.RustLsp 'codeAction'
-            end, { desc = 'Code Action', buffer = bufnr })
-
-            vim.keymap.set('n', '<leader>dr', function()
-              vim.cmd.RustLsp 'debuggables'
-            end, { desc = 'Rust Debuggables', buffer = bufnr })
-          end,
-          default_settings = {
-            ['rust-analyzer'] = {
-              cargo = {
-                allFeatures = true,
-                loadOutDirsFromCheck = true,
-                buildScripts = {
-                  enable = true,
-                },
-              },
-              checkOnSave = true, -- default aktif
-              diagnostics = {
-                enable = true,
-              },
-              procMacro = {
-                enable = true,
-                ignored = {
-                  ['async-trait'] = { 'async_trait' },
-                  ['napi-derive'] = { 'napi' },
-                  ['async-recursion'] = { 'async_recursion' },
-                },
-              },
-              files = {
-                excludeDirs = {
-                  '.direnv',
-                  '.git',
-                  '.github',
-                  '.gitlab',
-                  'bin',
-                  'node_modules',
-                  'target',
-                  'venv',
-                  '.venv',
-                },
-              },
-            },
-          },
-        },
-      }
-
-      -- cek kalau mason dan codelldb tersedia
-      local ok, mason_registry = pcall(require, 'mason-registry')
-      if ok and mason_registry.is_installed 'codelldb' then
-        local codelldb_pkg = mason_registry.get_package 'codelldb'
-
-        if not codelldb_pkg:is_installed() then
-          vim.notify('codelldb is not installed', vim.log.levels.ERROR)
-        else
-          local package_path = vim.fn.expand '$MASON/packages/codelldb'
-          local codelldb = package_path .. '/extension/adapter/codelldb'
-          local library_path = package_path .. '/extension/lldb/lib/liblldb.dylib'
-          if vim.fn.has 'linux' == 1 then
-            library_path = package_path .. '/extension/lldb/lib/liblldb.so'
-          end
-
-          rust_opts.dap = {
-            adapter = require('rustaceanvim.config').get_codelldb_adapter(codelldb, library_path),
-          }
-        end
-      end
-
-      -- peringatan kalau rust-analyzer belum ada
-      if vim.fn.executable 'rust-analyzer' == 0 then
-        vim.notify(
-          '**rust-analyzer** not found in PATH, please install it.\nhttps://rust-analyzer.github.io/',
-          vim.log.levels.ERROR,
-          { title = 'rustaceanvim' }
-        )
-      end
-
-      return rust_opts
-    end,
-    config = function(_, opts)
-      vim.g.rustaceanvim = opts
-    end,
+    'saecki/crates.nvim',
+    version = 'v0.3.0',
+    event = 'BufRead Cargo.toml', -- hanya aktif di Cargo.toml
+    ft = { 'toml' },
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      popup = {},
+    },
   },
 }
