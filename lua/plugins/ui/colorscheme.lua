@@ -4,11 +4,12 @@ return {
   priority = 1000,
   config = function()
     require('catppuccin').setup {
+      transparent_background = false,
       flavour = 'mocha',
       integrations = {
         indent_blankline = {
           enabled = true,
-          scope_color = 'blue', -- pilih warna (blue, red, green, peach, dll sesuai palette catppuccin)
+          scope_color = 'lavender', -- pilih warna (blue, red, green, peach, dll sesuai palette catppuccin)
           colored_indent_levels = false,
         },
       },

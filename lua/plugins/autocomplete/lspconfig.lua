@@ -1,10 +1,4 @@
-local function get_pkg_path(pkg, subpath)
-  local base = vim.fn.stdpath 'data' .. '/mason/packages/' .. pkg
-  if subpath then
-    base = base .. subpath
-  end
-  return base
-end
+local utils = require 'utils.function'
 
 return {
   {
@@ -21,7 +15,11 @@ return {
               runtime = { version = 'LuaJIT' },
               diagnostics = { globals = { 'vim' } },
               workspace = {
-                library = vim.api.nvim_get_runtime_file('', true),
+                library = {
+                  vim.fn.expand '~/.love-api',
+                  vim.fn.expand '$VIMRUNTIME/lua',
+                  vim.fn.stdpath 'config' .. '/lua',
+                },
                 checkThirdParty = false,
               },
               telemetry = { enable = false },
@@ -144,22 +142,24 @@ return {
       vim.list_extend(servers.vtsls.settings.vtsls.tsserver.globalPlugins, {
         {
           name = 'typescript-svelte-plugin',
-          location = get_pkg_path('svelte-language-server', '/node_modules/typescript-svelte-plugin'),
+          location = utils:get_pkg_path('svelte-language-server', '/node_modules/typescript-svelte-plugin'),
           enableForWorkspaceTypeScriptVersions = true,
         },
         {
           name = '@astrojs/ts-plugin',
-          location = get_pkg_path('astro-language-server', '/node_modules/@astrojs/ts-plugin'),
+          location = utils:get_pkg_path('astro-language-server', '/node_modules/@astrojs/ts-plugin'),
           enableForWorkspaceTypeScriptVersions = true,
         },
         {
           name = '@vue/typescript-plugin',
-          location = get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
+          location = utils:get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
           languages = { 'vue' },
           configNamespace = 'typescript',
           enableForWorkspaceTypeScriptVersions = true,
         },
       })
+
+      vim.keymap.set('n', '<leader>rl', utils.reload_lsp, { desc = 'reload lsp' })
 
       for server, config in pairs(servers) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)

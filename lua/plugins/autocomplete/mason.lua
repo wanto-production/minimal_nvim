@@ -43,6 +43,7 @@ return {
           'tailwindcss',
           'yamlls',
           'intelephense',
+          'vue_ls',
         },
         automatic_installation = true,
       }
