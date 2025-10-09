@@ -9,6 +9,7 @@ return {
       timeout = 2000, -- waktu tampil (ms)
       background_colour = '#000000', -- warna background
       render = 'default',
+      top_down = false,
     }
 
     vim.notify = notify
