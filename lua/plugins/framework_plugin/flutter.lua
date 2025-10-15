@@ -17,7 +17,7 @@ return {
       decorations = {
         statusline = {
           app_version = true, -- tampilkan versi app
-          device = true,      -- tampilkan device
+          device = true, -- tampilkan device
           project_config = true,
         },
       },
