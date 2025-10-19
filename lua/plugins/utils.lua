@@ -7,17 +7,6 @@ return {
     opts = { signs = false },
   },
 
-  -- Lua LSP for Neovim development
-  {
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-      },
-    },
-  },
-
   -- Which-Key popup for keybindings
   {
     'folke/which-key.nvim',

@@ -7,10 +7,9 @@ return {
       transparent_background = false,
       flavour = 'mocha',
       integrations = {
-        indent_blankline = {
+        snacks = {
           enabled = true,
-          scope_color = 'lavender', -- pilih warna (blue, red, green, peach, dll sesuai palette catppuccin)
-          colored_indent_levels = false,
+          indent_scope_color = 'lavender', -- pilih warna (blue, red, green, peach, dll sesuai palette catppuccin)
         },
       },
     }

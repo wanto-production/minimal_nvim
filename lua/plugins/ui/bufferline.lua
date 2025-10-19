@@ -3,10 +3,10 @@ return {
   event = 'BufReadPre',
   dependencies = {
     'nvim-tree/nvim-web-devicons',
-    'famiu/bufdelete.nvim',
   },
   config = function()
     require('bufferline').setup {
+      highlights = require('catppuccin.special.bufferline').get_theme(),
       options = {
         mode = 'buffers',
         numbers = 'ordinal',
@@ -38,6 +38,5 @@ return {
     -- Keymaps
     vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Prev Buffer' })
     vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next Buffer' })
-    vim.keymap.set('n', '<leader>bd', '<cmd>Bdelete<CR>', { desc = 'Safe Delete Buffer' })
   end,
 }

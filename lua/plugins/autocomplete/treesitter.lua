@@ -36,6 +36,9 @@ return {
         'ron',
         'regex',
         'php',
+        'latex',
+        'norg',
+        'typst',
       }
       opts.auto_install = true
       opts.highlight = { enable = true }
