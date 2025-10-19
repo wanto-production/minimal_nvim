@@ -134,6 +134,7 @@ return {
 
         intelephense = {},
         astro = {},
+        gopls = {},
       }
 
       --- NOTE: typescript plugins

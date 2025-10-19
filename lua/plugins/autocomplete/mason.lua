@@ -44,6 +44,7 @@ return {
           'yamlls',
           'intelephense',
           'vue_ls',
+          'gopls',
         },
         automatic_installation = true,
       }
