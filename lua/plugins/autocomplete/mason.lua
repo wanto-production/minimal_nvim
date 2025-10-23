@@ -42,9 +42,8 @@ return {
           'astro',
           'tailwindcss',
           'yamlls',
-          'intelephense',
           'vue_ls',
-          'gopls',
+          'prismals',
         },
         automatic_installation = true,
       }
