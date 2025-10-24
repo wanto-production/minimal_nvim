@@ -122,12 +122,29 @@ return {
           end,
         },
 
+        gleam = {
+          cmd = { vim.fn.expand '~/.asdf/shims/gleam', 'lsp' },
+          filetypes = { 'gleam' },
+          on_attach = function(_, bufnr)
+            -- Keybindings
+            local opts = { buffer = bufnr, noremap = true, silent = true }
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+            vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+
+            -- Enable completion triggered by <c-x><c-o>
+            vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+            print('✓ Gleam LSP attached to buffer ' .. bufnr)
+          end,
+        },
+
         dartls = {},
         astro = {},
         prismals = {},
-        gleam = {
-          filetypes = { 'gleam' },
-        },
       }
 
       --- NOTE: typescript plugins
