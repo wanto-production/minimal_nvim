@@ -77,9 +77,10 @@ return {
           'mkv',
           'webm',
           'pdf',
+          'ico',
         },
         convert = { notify = true },
-        doc = { max_width = 80, max_height = 40 },
+        doc = { enabled = false },
         cache = vim.fn.stdpath 'cache' .. '/snacks/image',
       },
       indent = {
