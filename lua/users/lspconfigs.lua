@@ -124,11 +124,7 @@ return {
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
       vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
       vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-
-      -- Enable completion triggered by <c-x><c-o>
       vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-      print('✓ Gleam LSP attached to buffer ' .. bufnr)
     end,
   },
 
