@@ -11,35 +11,7 @@ return {
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs',
     opts = function(_, opts)
-      opts.ensure_installed = {
-        'vue',
-        'angular',
-        'scss',
-        'typescript',
-        'javascript',
-        'astro',
-        'svelte',
-        'css',
-        'html',
-        'bash',
-        'c',
-        'c_sharp',
-        'diff',
-        'lua',
-        'luadoc',
-        'markdown',
-        'markdown_inline',
-        'query',
-        'vim',
-        'vimdoc',
-        'rust',
-        'ron',
-        'regex',
-        'php',
-        'latex',
-        'norg',
-        'typst',
-      }
+      opts.ensure_installed = require('users.lang').treesitter
       opts.auto_install = true
       opts.highlight = { enable = true }
 

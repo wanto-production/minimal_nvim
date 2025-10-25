@@ -32,19 +32,7 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('mason-lspconfig').setup {
-        ensure_installed = {
-          'lua_ls',
-          'taplo',
-          'vtsls',
-          'cssls',
-          'jsonls',
-          'svelte',
-          'astro',
-          'tailwindcss',
-          'yamlls',
-          'vue_ls',
-          'prismals',
-        },
+        ensure_installed = require('users.lang').mason.lsp,
         automatic_installation = true,
       }
     end,
@@ -59,16 +47,7 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('mason-tool-installer').setup {
-        ensure_installed = {
-          -- Debug Adapters
-
-          -- Formatters
-          'stylua',
-          'prettierd',
-
-          -- Linters
-          'eslint_d',
-        },
+        ensure_installed = require('users.lang').mason.formatter_and_linter,
         auto_update = true,
         run_on_start = true,
         start_delay = 3000, -- delay 3 detik setelah nvim start
