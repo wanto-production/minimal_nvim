@@ -114,7 +114,6 @@ return {
   },
 
   gleam = {
-    cmd = { vim.fn.expand '~/.asdf/shims/gleam', 'lsp' },
     filetypes = { 'gleam' },
     on_attach = function(_, bufnr)
       -- Keybindings
