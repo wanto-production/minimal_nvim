@@ -6,12 +6,8 @@ return {
         runtime = { version = 'LuaJIT' },
         diagnostics = { globals = { 'vim' } },
         workspace = {
-          library = {
-            vim.fn.expand '~/.love-api',
-            vim.fn.expand '$VIMRUNTIME/lua',
-            vim.fn.stdpath 'config' .. '/lua',
-          },
-          checkThirdParty = false,
+          library = vim.api.nvim_get_runtime_file('', true),
+          checkThirdParty = false, -- Disable annoying prompt
         },
         telemetry = { enable = false },
       },

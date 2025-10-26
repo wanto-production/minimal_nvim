@@ -7,7 +7,7 @@ return {
       'b0o/schemastore.nvim',
     },
     config = function()
-      local servers = require 'users.lspconfigs'
+      local servers = require 'users.lsp'
 
       --- NOTE: typescript plugins
       servers.vtsls.settings.vtsls.tsserver = servers.vtsls.settings.vtsls.tsserver or {}
