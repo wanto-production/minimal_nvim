@@ -18,6 +18,12 @@ return {
       'stylua',
       'prettierd',
       'eslint_d',
+      'csharpier',
+    },
+
+    registries = {
+      'github:mason-org/mason-registry',
+      'github:Crashdummyy/mason-registry',
     },
   },
 

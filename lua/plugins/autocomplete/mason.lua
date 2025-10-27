@@ -18,6 +18,7 @@ return {
             package_uninstalled = '✗',
           },
         },
+        registries = require('users.lang').mason.registries,
       }
     end,
   },
