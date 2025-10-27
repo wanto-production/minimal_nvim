@@ -1,3 +1,6 @@
+if vim.g.laravel == false then
+  return {}
+end
 return {
   'adalessa/laravel.nvim',
   dependencies = {

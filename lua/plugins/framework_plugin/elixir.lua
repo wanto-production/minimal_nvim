@@ -1,3 +1,7 @@
+if vim.g.elixir == false then
+  return {}
+end
+
 return {
   'elixir-tools/elixir-tools.nvim',
   version = '*',

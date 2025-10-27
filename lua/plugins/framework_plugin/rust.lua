@@ -1,3 +1,6 @@
+if vim.g.rust == false then
+  return {}
+end
 return {
   {
     'mrcjkb/rustaceanvim',
@@ -11,29 +14,29 @@ return {
 
             -- format on save rust_analyzer
             -- https://github.com/nvimtools/none-ls.nvim/issues/58#issuecomment-1924105768
-            vim.api.nvim_clear_autocmds({ buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
+            vim.api.nvim_clear_autocmds { buffer = bufnr }
+            vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = bufnr,
               callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr })
+                vim.lsp.buf.format { bufnr = bufnr }
               end,
             })
-          end
-        }
+          end,
+        },
       }
-    end
+    end,
   },
   -- crates
   {
-    "saecki/crates.nvim",
-    version = "v0.3.0",
+    'saecki/crates.nvim',
+    version = 'v0.3.0',
     lazy = true,
-    ft = { "rust", "toml" },
-    event = { "BufRead", "BufReadPre", "BufNewFile" },
-    dependencies = { "nvim-lua/plenary.nvim" },
+    ft = { 'rust', 'toml' },
+    event = { 'BufRead', 'BufReadPre', 'BufNewFile' },
+    dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
-      require("crates").setup {
-        popup = {}
+      require('crates').setup {
+        popup = {},
       }
     end,
   },

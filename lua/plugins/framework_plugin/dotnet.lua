@@ -1,4 +1,4 @@
-if true then
+if vim.g.dotnet == false then
   return {}
 end
 return {

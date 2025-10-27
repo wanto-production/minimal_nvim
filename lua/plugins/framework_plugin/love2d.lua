@@ -1,4 +1,4 @@
-if true then
+if vim.g.love_game == false then
   return {}
 end
 -- using lazy.nvim

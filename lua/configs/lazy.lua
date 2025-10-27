@@ -1,3 +1,4 @@
+require 'configs.framework_plugins'
 require 'configs.keymaps'
 require 'configs.options'
 require 'configs.autocmd'
