@@ -32,4 +32,8 @@ function utils:get_pkg_path(pkg, subpath)
   return base
 end
 
+function utils:code_action()
+  vim.lsp.buf.code_action()
+end
+
 return utils

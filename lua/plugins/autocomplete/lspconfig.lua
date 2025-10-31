@@ -8,6 +8,10 @@ return {
     },
     config = function()
       local servers = require 'users.lsp'
+      ---@param opt vim.keymap.set.Opts
+      local keymap = function(mode, lhs, rhs, opt)
+        return vim.keymap.set(mode, lhs, rhs, { desc = '[Lsp]: ' .. opt.desc, silent = opt.silent })
+      end
 
       --- NOTE: typescript plugins
       servers.vtsls.settings.vtsls.tsserver = servers.vtsls.settings.vtsls.tsserver or {}
@@ -32,7 +36,8 @@ return {
         },
       })
 
-      vim.keymap.set('n', '<leader>rl', utils.reload_lsp, { desc = 'reload lsp' })
+      keymap('n', '<leader>lr', utils.reload_lsp, { desc = 'reload' })
+      keymap('n', '<leader>la', utils.code_action, { desc = 'code action' })
 
       for server, config in pairs(servers) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)

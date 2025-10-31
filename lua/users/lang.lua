@@ -12,7 +12,7 @@ return {
       'yamlls',
       'vue_ls',
       'prismals',
-      'intelephense',
+      'omnisharp',
     },
     formatter_and_linter = {
       'stylua',

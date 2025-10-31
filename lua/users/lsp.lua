@@ -109,7 +109,7 @@ return {
     end,
   },
 
-  roslyn = {
+  omnisharp = {
     settings = {
       ['csharp|inlay_hints'] = {
         csharp_enable_inlay_hints_for_implicit_object_creation = true,
@@ -121,7 +121,6 @@ return {
     },
   },
 
-  dartls = {},
   astro = {},
   prismals = {},
 }
