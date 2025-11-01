@@ -12,13 +12,12 @@ return {
       'yamlls',
       'vue_ls',
       'prismals',
-      'omnisharp',
+      'zls',
     },
     formatter_and_linter = {
       'stylua',
       'prettierd',
       'eslint_d',
-      'csharpier',
     },
 
     registries = {
