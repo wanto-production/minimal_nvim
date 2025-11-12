@@ -1,49 +1,21 @@
-local utils = require 'utils.function'
-
 return {
   {
+    'b0o/schemastore.nvim',
+  },
+
+  {
     'neovim/nvim-lspconfig',
-    dependencies = {
-      'b0o/schemastore.nvim',
-    },
+    lazy = false,
     config = function()
-      local servers = require 'users.lsp'
+      local utils = require('utils.function')
       ---@param opt vim.keymap.set.Opts
       local keymap = function(mode, lhs, rhs, opt)
         return vim.keymap.set(mode, lhs, rhs, { desc = '[Lsp]: ' .. opt.desc, silent = opt.silent })
       end
 
-      --- NOTE: typescript plugins
-      servers.vtsls.settings.vtsls.tsserver = servers.vtsls.settings.vtsls.tsserver or {}
-      servers.vtsls.settings.vtsls.tsserver.globalPlugins = servers.vtsls.settings.vtsls.tsserver.globalPlugins or {}
-      vim.list_extend(servers.vtsls.settings.vtsls.tsserver.globalPlugins, {
-        {
-          name = 'typescript-svelte-plugin',
-          location = utils:get_pkg_path('svelte-language-server', '/node_modules/typescript-svelte-plugin'),
-          enableForWorkspaceTypeScriptVersions = true,
-        },
-        {
-          name = '@astrojs/ts-plugin',
-          location = utils:get_pkg_path('astro-language-server', '/node_modules/@astrojs/ts-plugin'),
-          enableForWorkspaceTypeScriptVersions = true,
-        },
-        {
-          name = '@vue/typescript-plugin',
-          location = utils:get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
-          languages = { 'vue' },
-          configNamespace = 'typescript',
-          enableForWorkspaceTypeScriptVersions = true,
-        },
-      })
 
       keymap('n', '<leader>lr', utils.reload_lsp, { desc = 'reload' })
       keymap('n', '<leader>la', utils.code_action, { desc = 'code action' })
-
-      for server, config in pairs(servers) do
-        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-        vim.lsp.config[server] = config
-        vim.lsp.enable(server)
-      end
     end,
   },
 }
