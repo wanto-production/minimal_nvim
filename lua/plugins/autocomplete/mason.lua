@@ -30,7 +30,7 @@ return {
       'williamboman/mason.nvim',
       'neovim/nvim-lspconfig',
     },
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = { 'VimEnter' },
     config = function()
       require('mason-lspconfig').setup {
         ensure_installed = require('users.lang').mason.lsp,
