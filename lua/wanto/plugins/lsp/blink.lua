@@ -6,17 +6,6 @@ return {
     build = 'cargo build --release',
     dependencies = {
       {
-        'L3MON4D3/LuaSnip',
-        event = 'InsertEnter',
-        version = '2.*',
-        build = (function()
-          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-            return
-          end
-          return 'make install_jsregexp'
-        end)(),
-      },
-      {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
         config = function()
@@ -30,10 +19,9 @@ return {
           require('luasnip.loaders.from_vscode').lazy_load()
         end,
       },
-      { 'folke/lazydev.nvim',                  ft = 'lua' },
-      { "antosha417/nvim-lsp-file-operations", config = true },
-      { "folke/lazydev.nvim",                  opts = {} },
-      { 'b0o/schemastore.nvim', },
+      { 'folke/lazydev.nvim', ft = 'lua' },
+      { 'antosha417/nvim-lsp-file-operations', config = true },
+      { 'b0o/schemastore.nvim' },
       'onsails/lspkind.nvim',
     },
     opts = function()
@@ -42,7 +30,7 @@ return {
 
       local capabilities = require('blink-cmp').get_lsp_capabilities()
 
-      vim.lsp.config("*", {
+      vim.lsp.config('*', {
         capabilities = capabilities,
       })
 
