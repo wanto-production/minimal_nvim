@@ -1,5 +1,4 @@
-return{
-	
+return {
   { -- Autoformat
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
@@ -40,6 +39,4 @@ return{
       },
     },
   },
-
-
 }

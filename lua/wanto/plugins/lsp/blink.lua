@@ -12,13 +12,6 @@ return {
           require('nvim-autopairs').setup {}
         end,
       },
-      {
-        'rafamadriz/friendly-snippets',
-        event = 'InsertEnter',
-        config = function()
-          require('luasnip.loaders.from_vscode').lazy_load()
-        end,
-      },
       { 'folke/lazydev.nvim', ft = 'lua' },
       { 'antosha417/nvim-lsp-file-operations', config = true },
       { 'b0o/schemastore.nvim' },
@@ -69,12 +62,11 @@ return {
           },
         },
         sources = {
-          default = { 'lsp', 'path', 'snippets', 'lazydev' },
+          default = { 'lsp', 'path', 'lazydev' },
           providers = {
             lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
           },
         },
-        snippets = { preset = 'luasnip' },
         fuzzy = {
           implementation = 'prefer_rust_with_warning', -- Atur mode fuzzy
         },
