@@ -1,5 +1,5 @@
 return {
-  root_dir = vim.fs.root(0, { "deno.json" }),
+  root_dir = vim.fs.root(0, { 'deno.json' }),
   filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
   init_options = {
     lint = true,
@@ -13,5 +13,4 @@ return {
       },
     },
   },
-
 }
