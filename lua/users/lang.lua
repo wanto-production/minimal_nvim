@@ -13,7 +13,6 @@ return {
       'vue_ls',
       'prismals',
       'zls',
-      'denols',
     },
     formatter_and_linter = {
       'stylua',

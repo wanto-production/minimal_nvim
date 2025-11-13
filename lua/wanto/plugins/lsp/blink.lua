@@ -30,12 +30,21 @@ return {
           require('luasnip.loaders.from_vscode').lazy_load()
         end,
       },
-      { 'folke/lazydev.nvim', ft = 'lua' },
+      { 'folke/lazydev.nvim',                  ft = 'lua' },
+      { "antosha417/nvim-lsp-file-operations", config = true },
+      { "folke/lazydev.nvim",                  opts = {} },
+      { 'b0o/schemastore.nvim', },
       'onsails/lspkind.nvim',
     },
     opts = function()
       local devicons = require 'nvim-web-devicons'
       local lspkind = require 'lspkind'
+
+      local capabilities = require('blink-cmp').get_lsp_capabilities()
+
+      vim.lsp.config("*", {
+        capabilities = capabilities,
+      })
 
       return {
         keymap = {
