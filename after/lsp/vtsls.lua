@@ -1,5 +1,4 @@
--- ~/.config/nvim/after/lsp/vtsls.lua
-local utils = require("utils.function")
+local utils = require 'utils.function'
 
 local globalPlugins = {
   {
@@ -18,11 +17,11 @@ local globalPlugins = {
     languages = { 'vue' },
     configNamespace = 'typescript',
     enableForWorkspaceTypeScriptVersions = true,
-  }
+  },
 }
 
 return {
-  root_dir = vim.fs.root(0, { "package.json", "node_modules" }),
+  root_dir = vim.fs.root(0, { 'package.json', 'node_modules' }),
   filetypes = {
     'javascript',
     'javascriptreact',
@@ -55,7 +54,7 @@ return {
       },
     },
     tsserver = {
-      globalPlugin = globalPlugins
-    }
+      globalPlugin = globalPlugins,
+    },
   },
 }
