@@ -1,6 +1,6 @@
 local utils = require 'utils.function'
 
-local globalPlugins = {
+local additional_plugins = {
   {
     name = 'typescript-svelte-plugin',
     location = utils:get_pkg_path('svelte-language-server', '/node_modules/typescript-svelte-plugin'),
@@ -54,7 +54,7 @@ return {
       },
     },
     tsserver = {
-      globalPlugin = globalPlugins,
+      globalPlugins = additional_plugins,
     },
   },
 }
