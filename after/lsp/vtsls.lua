@@ -40,6 +40,9 @@ return {
         maxInlayHintLength = 30,
         completion = { enableServerSideFuzzyMatch = true },
       },
+      tsserver = {
+        globalPlugins = additional_plugins,
+      },
     },
     typescript = {
       updateImportsOnFileMove = { enabled = 'always' },
@@ -52,9 +55,6 @@ return {
         propertyDeclarationTypes = { enabled = true },
         variableTypes = { enabled = false },
       },
-    },
-    tsserver = {
-      globalPlugins = additional_plugins,
     },
   },
 }
