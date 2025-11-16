@@ -45,6 +45,7 @@ return {
       },
     },
     typescript = {
+      tsdk = vim.fn.getcwd() .. '/node_modules/typescript/lib',
       updateImportsOnFileMove = { enabled = 'always' },
       suggest = { completeFunctionCalls = true },
       inlayHints = {
