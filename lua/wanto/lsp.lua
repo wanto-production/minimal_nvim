@@ -1,15 +1,15 @@
-local utils = require('utils.function')
+local utils = require 'utils.function'
 local keymap = vim.keymap -- for conciseness
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     local opts = { buffer = ev.buf, silent = true }
 
-    opts.desc = "Reload LSP"
+    opts.desc = '[Lsp] reload'
     keymap.set('n', '<leader>lr', utils.reload_lsp, opts)
 
-    opts.desc = "Code Action LSP"
+    opts.desc = '[Lsp] code action'
     keymap.set('n', '<leader>la', utils.code_action, opts)
   end,
 })
@@ -17,13 +17,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- vim.lsp.inlay_hint.enable(true)
 local severity = vim.diagnostic.severity
 
-vim.diagnostic.config({
+vim.diagnostic.config {
   signs = {
     text = {
-      [severity.ERROR] = " ",
-      [severity.WARN] = " ",
-      [severity.HINT] = "󰠠 ",
-      [severity.INFO] = " ",
+      [severity.ERROR] = ' ',
+      [severity.WARN] = ' ',
+      [severity.HINT] = '󰠠 ',
+      [severity.INFO] = ' ',
     },
   },
-})
+}
