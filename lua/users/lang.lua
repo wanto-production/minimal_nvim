@@ -14,6 +14,7 @@ return {
       'prismals',
       'zls',
       'fish_lsp',
+      'emmet_ls',
     },
     formatter_and_linter = {
       'stylua',
