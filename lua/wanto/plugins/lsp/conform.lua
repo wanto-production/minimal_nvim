@@ -11,6 +11,7 @@ return {
         },
         formatters_by_ft = {
           lua = { 'stylua' },
+          vue = { 'prettier' },
           -- javascript = { "prettierd", "prettier", stop_after_first = true },
         },
       }
