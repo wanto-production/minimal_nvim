@@ -12,7 +12,6 @@ return {
       'yamlls',
       'vue_ls',
       'prismals',
-      'zls',
       'fish_lsp',
       'emmet_ls',
     },
@@ -24,7 +23,6 @@ return {
 
     registries = {
       'github:mason-org/mason-registry',
-      'github:Crashdummyy/mason-registry',
     },
   },
 

@@ -21,7 +21,7 @@ local additional_plugins = {
 }
 
 return {
-  root_dir = vim.fs.root(0, { 'package.json', 'node_modules' }),
+  root_markers = { 'package.json' },
   filetypes = {
     'javascript',
     'javascriptreact',

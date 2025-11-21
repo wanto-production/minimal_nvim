@@ -13,7 +13,6 @@ return {
         end,
       },
       { 'folke/lazydev.nvim', ft = 'lua' },
-      { 'antosha417/nvim-lsp-file-operations', config = true },
       { 'b0o/schemastore.nvim' },
       'onsails/lspkind.nvim',
     },
