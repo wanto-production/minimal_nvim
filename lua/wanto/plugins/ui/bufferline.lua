@@ -1,6 +1,6 @@
 return {
   'akinsho/bufferline.nvim',
-  event = 'VeryLazy', -- atau "UIEnter"
+  event = { 'BufEnter', 'VeryLazy' }, -- atau "UIEnter"
   dependencies = {
     'nvim-tree/nvim-web-devicons',
   },
