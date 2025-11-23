@@ -15,9 +15,6 @@ return {
           -- javascript = { "prettierd", "prettier", stop_after_first = true },
         },
       }
-      vim.keymap.set('n', '<leader>r', function()
-        require('conform').format { async = true, lsp_fallback = true }
-      end, { desc = '[F]ormat buffer' })
     end,
   },
 }

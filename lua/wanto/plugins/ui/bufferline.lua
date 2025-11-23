@@ -34,9 +34,5 @@ return {
         },
       },
     }
-
-    -- Keymaps
-    vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Prev Buffer' })
-    vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next Buffer' })
   end,
 }
