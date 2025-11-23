@@ -20,9 +20,11 @@ vim.keymap.set('n', '<A-Up>', ':m .-2<CR>==', { desc = 'Move line up', noremap =
 vim.keymap.set('n', '<A-Down>', ':m .+1<CR>==', { desc = 'Move line down', noremap = true, silent = true })
 vim.keymap.set('n', 'D', '"_D', { noremap = true })
 vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'Diagnostics (Trouble)' })
 vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Prev Buffer' })
 vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next Buffer' })
+vim.keymap.set('n', '<leader>xx', function()
+  require('trouble').toggle { mode = 'diagnostics' }
+end, { desc = 'Diagnostics (Trouble)' })
 vim.keymap.set('n', '<leader>r', function()
   require('conform').format { async = true, lsp_fallback = true }
 end, { desc = '[F]ormat buffer' })
