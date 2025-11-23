@@ -27,13 +27,13 @@ return {
                 typeHints = { enable = true },
 
                 -- Nonaktifkan chaining hints (pada method chain)
-                chainingHints = { enable = true },
+                chainingHints = { enable = false },
 
                 -- Nonaktifkan closure capture hints
                 closureCaptureHints = { enable = false },
 
                 -- Nonaktifkan closure return type hints
-                closureReturnTypeHints = { enable = 'always' }, -- atau "always", "with_block"
+                closureReturnTypeHints = { enable = 'never' }, -- atau "always", "with_block"
 
                 -- Nonaktifkan lifetime hints
                 lifetimeElisionHints = { enable = 'never' }, -- atau "always", "skip_trivial"
