@@ -54,5 +54,6 @@ return {
     'latex',
     'norg',
     'typst',
+    'tsx',
   },
 }
