@@ -1,9 +1,9 @@
 vim.diagnostic.config {
-  virtual_text = true,      -- Tampilkan inline error/warning
-  signs = true,             -- Tampilkan icon di gutter (kiri)
-  underline = false,        -- Garis bawah di teks yang error
+  virtual_text = true, -- Tampilkan inline error/warning
+  signs = true, -- Tampilkan icon di gutter (kiri)
+  underline = false, -- Garis bawah di teks yang error
   update_in_insert = false, -- Update diagnostic saat mode insert
-  severity_sort = true,     -- Urutkan berdasarkan tingkat error
+  severity_sort = true, -- Urutkan berdasarkan tingkat error
 }
 
 vim.g.loaded_netrw = 1
@@ -16,10 +16,10 @@ vim.g.have_nerd_font = false
 vim.opt.wrap = false
 vim.opt.sidescroll = 1
 vim.opt.sidescrolloff = 5
-vim.opt.laststatus = 3   -- global statusline (opsional, supaya lualine konsisten)
-vim.opt.tabstop = 2      -- Lebar tab secara visual (berapa spasi)
-vim.opt.shiftwidth = 2   -- Lebar indentasi saat << atau >>
-vim.opt.softtabstop = 2  -- Saat menekan <Tab>, berapa spasi yang digunakan
+vim.opt.laststatus = 3 -- global statusline (opsional, supaya lualine konsisten)
+vim.opt.tabstop = 2 -- Lebar tab secara visual (berapa spasi)
+vim.opt.shiftwidth = 2 -- Lebar indentasi saat << atau >>
+vim.opt.softtabstop = 2 -- Saat menekan <Tab>, berapa spasi yang digunakan
 vim.opt.expandtab = true -- Gunakan spasi daripada karakter tab
 vim.opt.smartindent = true
 vim.opt.autoindent = true
