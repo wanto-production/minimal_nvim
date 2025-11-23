@@ -1,3 +1,5 @@
 require 'wanto.core.api'
 require 'wanto.core.options'
-require 'wanto.core.keymaps'
+vim.schedule(function()
+  require 'wanto.core.keymaps'
+end)

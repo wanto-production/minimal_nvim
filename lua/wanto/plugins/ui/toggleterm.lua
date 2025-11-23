@@ -15,7 +15,5 @@ return {
         height = math.floor(vim.o.lines * 0.8),
       },
     }
-
-    vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
   end,
 }

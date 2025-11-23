@@ -19,6 +19,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<A-Up>', ':m .-2<CR>==', { desc = 'Move line up', noremap = true, silent = true })
 vim.keymap.set('n', '<A-Down>', ':m .+1<CR>==', { desc = 'Move line down', noremap = true, silent = true })
 vim.keymap.set('n', 'D', '"_D', { noremap = true })
+vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'Diagnostics (Trouble)' })
+
 -- campuran
 vim.keymap.set({ 'n', 'v' }, 'd', '"_d', { noremap = true })
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', function()
