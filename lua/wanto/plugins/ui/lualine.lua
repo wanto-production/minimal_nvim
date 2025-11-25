@@ -20,7 +20,7 @@ return {
 
     return {
       options = {
-        theme = 'tokyonight',
+        theme = 'catppuccin',
         globalstatus = true,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' }, -- NvChad style

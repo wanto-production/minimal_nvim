@@ -6,7 +6,7 @@ return {
   },
   config = function()
     require('bufferline').setup {
-      -- highlights = require('tokyonight.groups.integrations.bufferline').get(),
+      highlights = require('catppuccin.special.bufferline').get_theme(),
       options = {
         mode = 'buffers',
         numbers = 'ordinal',
