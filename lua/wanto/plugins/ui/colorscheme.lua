@@ -5,12 +5,12 @@ return {
   priority = 1000,
   config = function()
     require('catppuccin').setup {
-      flavour = 'mocha', -- mocha paling gelap
+      flavour = 'mocha',
       transparent_background = false,
       dim_inactive = {
         enabled = true,
         shade = 'dark',
-        percentage = 0.15,
+        percentage = 0.10,
       },
       styles = {
         comments = { 'italic' },
@@ -18,15 +18,23 @@ return {
       },
       color_overrides = {
         mocha = {
-          base = '#11111b', -- lebih gelap dari default
-          mantle = '#0e0e16', -- super dark
-          crust = '#0a0a10', -- darkest
+          base = '#11151c', -- sedikit lebih terang, tetap blue-black
+          mantle = '#0e1117', -- dark blue-black
+          crust = '#0a0d12', -- darkest
+          -- Text colors
+          text = '#c9d1d9',
+          subtext1 = '#b1bac4',
+          subtext0 = '#8b949e',
+          -- Surface colors
+          surface0 = '#1a1f26',
+          surface1 = '#252a32',
+          surface2 = '#30353d',
         },
       },
       integrations = {
         snacks = {
           enabled = true,
-          indent_scope_color = 'lavender', -- catppuccin color (eg. `lavender`) Default: text
+          indent_scope_color = 'sapphire',
         },
       },
     }
