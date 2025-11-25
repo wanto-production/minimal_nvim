@@ -2,26 +2,7 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   dependencies = {
-    -- Di plugin config terpisah
-    {
-      'nvim-tree/nvim-web-devicons',
-      opts = {
-        color_icons = true,
-        default = true,
-        override = {
-          default_icon = {
-            icon = '',
-            color = '#7aa2f7',
-          },
-        },
-        -- Force all icons to blue
-        override_by_extension = {
-          ['*'] = {
-            color = '#7aa2f7',
-          },
-        },
-      },
-    },
+    { 'nvim-tree/nvim-web-devicons' },
     {
       'echasnovski/mini.icons',
       opts = {
