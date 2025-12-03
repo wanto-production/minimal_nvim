@@ -3,8 +3,6 @@ return {
   lazy = false,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = function()
-    local triforce = require('triforce.lualine').components()
-
     -- Fungsi untuk menampilkan nama LSP yang aktif
     local function lsp_names()
       local clients = vim.lsp.get_clients { bufnr = 0 }
@@ -81,10 +79,6 @@ return {
           },
         },
         lualine_x = {
-          triforce.level,
-          triforce.achievements,
-          triforce.streak,
-          triforce.session_time,
           {
             lsp_names,
             icon = '',

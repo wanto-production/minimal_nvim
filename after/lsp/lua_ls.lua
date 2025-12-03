@@ -5,10 +5,9 @@ return {
       diagnostics = { globals = { 'vim' } },
       workspace = {
         library = vim.api.nvim_get_runtime_file('', true),
-        checkThirdParty = false,   -- Disable annoying prompt
+        checkThirdParty = false, -- Disable annoying prompt
       },
       telemetry = { enable = false },
     },
   },
-
 }

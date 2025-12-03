@@ -13,6 +13,8 @@ return {
       'vue_ls',
       'prismals',
       'fish_lsp',
+      'dockerls',
+      'gopls',
     },
     formatter_and_linter = {
       'stylua',
