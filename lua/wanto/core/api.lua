@@ -1,3 +1,6 @@
+local utils = require 'utils.function'
+local keymap = vim.keymap
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   -- Optional. You can alse set your own keybindings
   desc = 'Highlight when yanking (copying) text',
@@ -6,9 +9,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
--- Source - https://stackoverflow.com/q
--- Posted by Muhannad Elbolaky
--- Retrieved 2025-11-21, License - CC BY-SA 4.0
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf, silent = true }
+
+    opts.desc = '[Lsp] reload'
+    keymap.set('n', '<leader>lr', utils.reload_lsp, opts)
+
+    opts.desc = '[Lsp] code action'
+    keymap.set('n', '<leader>la', utils.code_action, opts)
+  end,
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)

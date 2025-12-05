@@ -1,7 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
   lazy = false,
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = function()
     -- Fungsi untuk menampilkan nama LSP yang aktif
     local function lsp_names()

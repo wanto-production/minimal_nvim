@@ -1,9 +1,19 @@
+local severity = vim.diagnostic.severity
+
 vim.diagnostic.config {
   virtual_text = true, -- Tampilkan inline error/warning
   signs = true, -- Tampilkan icon di gutter (kiri)
   underline = false, -- Garis bawah di teks yang error
   update_in_insert = false, -- Update diagnostic saat mode insert
   severity_sort = true, -- Urutkan berdasarkan tingkat error
+  signs = {
+    text = {
+      [severity.ERROR] = ' ',
+      [severity.WARN] = ' ',
+      [severity.HINT] = '󰠠 ',
+      [severity.INFO] = ' ',
+    },
+  },
 }
 
 vim.g.loaded_netrw = 1

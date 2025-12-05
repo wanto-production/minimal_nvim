@@ -14,12 +14,10 @@ return {
       },
       { 'folke/lazydev.nvim', ft = 'lua' },
       { 'b0o/schemastore.nvim' },
-      'onsails/lspkind.nvim',
+      'echasnovski/mini.icons', -- ✅ Hanya mini.icons
     },
     opts = function()
-      local devicons = require 'nvim-web-devicons'
-      local lspkind = require 'lspkind'
-
+      local mini_icons = require 'mini.icons'
       local capabilities = require('blink-cmp').get_lsp_capabilities()
 
       vim.lsp.config('*', {
@@ -32,27 +30,34 @@ return {
         },
         appearance = { nerd_font_variant = 'mono' },
         completion = {
-          documentation = { auto_show = false, auto_show_delay_ms = 500 },
+          documentation = {
+            auto_show = true,
+            window = {
+              border = 'single',
+            },
+          },
           menu = {
-            border = 'rounded',
+            border = 'single',
             draw = {
               components = {
                 kind_icon = {
                   text = function(ctx)
-                    local icon
+                    local icon = ''
+
                     if ctx.source_name == 'Path' then
-                      local dev_icon = devicons.get_icon(ctx.label)
-                      icon = dev_icon or ''
+                      icon = mini_icons.get('file', ctx.label)
                     else
-                      icon = lspkind.symbolic(ctx.kind, { mode = 'symbol' }) or ''
+                      icon = mini_icons.get('lsp', ctx.kind)
                     end
-                    return icon .. ctx.icon_gap
+
+                    return (icon or '') .. ctx.icon_gap
                   end,
                   highlight = function(ctx)
                     if ctx.source_name == 'Path' then
-                      local _, hl = devicons.get_icon(ctx.label)
+                      local _, hl = mini_icons.get('file', ctx.label)
                       return hl
                     end
+
                     return ctx.kind_hl
                   end,
                 },
@@ -63,11 +68,14 @@ return {
         sources = {
           default = { 'lsp', 'path', 'lazydev' },
           providers = {
-            lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+            lazydev = {
+              module = 'lazydev.integrations.blink',
+              score_offset = 100,
+            },
           },
         },
         fuzzy = {
-          implementation = 'prefer_rust_with_warning', -- Atur mode fuzzy
+          implementation = 'prefer_rust_with_warning',
         },
         signature = { enabled = true },
       }

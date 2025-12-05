@@ -1,23 +1,15 @@
 return {
   mason = {
-    lsp = {
-      'lua_ls',
-      'taplo',
+    ensure_installed = {
+      'tailwindcss-language-server',
+      'yaml-language-server',
+      'svelte-language-server',
+      'astro-language-server',
       'vtsls',
-      'cssls',
-      'jsonls',
-      'svelte',
-      'astro',
-      'tailwindcss',
-      'yamlls',
-      'vue_ls',
-      'prismals',
-      'fish_lsp',
-      'dockerls',
-      'gopls',
-    },
-    formatter_and_linter = {
+      'taplo',
+      'json-lsp',
       'stylua',
+      'vue-language-server',
       'prettierd',
       'eslint_d',
     },
