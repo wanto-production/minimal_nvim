@@ -78,6 +78,20 @@ return {
           },
         },
         lualine_x = {
+          -- Komponen Triforce ditambahkan di sini
+          function()
+            return require('triforce.lualine').level()
+          end,
+          function()
+            return require('triforce.lualine').achievements()
+          end,
+          function()
+            return require('triforce.lualine').streak()
+          end,
+          function()
+            return require('triforce.lualine').session_time()
+          end,
+          -- Komponen asli lualine_x
           {
             lsp_names,
             icon = '',
@@ -94,7 +108,7 @@ return {
           },
           'filetype',
         },
-        lualine_y = { 'progress' },
+        lualine_y = { 'progress' }, -- atau tempatkan komponen Triforce di sini jika diinginkan
         lualine_z = { 'location' },
       },
       inactive_sections = {
