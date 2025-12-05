@@ -5,6 +5,16 @@ return {
     require('bufferline').setup {
       highlights = require('catppuccin.special.bufferline').get_theme(),
       options = {
+        get_element_icon = function(element)
+          if element.filetype and element.filetype ~= '' then
+            local icon, hl = require('mini.icons').get('filetype', element.filetype)
+            return icon, hl
+          elseif element.path and element.path ~= '' then
+            local icon, hl = require('mini.icons').get('file', element.path)
+            return icon, hl
+          end
+          return '', ''
+        end,
         mode = 'buffers',
         numbers = 'ordinal',
         diagnostics = 'nvim_lsp',
