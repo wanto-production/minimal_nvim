@@ -78,7 +78,6 @@ return {
           },
         },
         lualine_x = {
-          -- Komponen Triforce ditambahkan di sini
           function()
             return require('triforce.lualine').level()
           end,
@@ -91,7 +90,6 @@ return {
           function()
             return require('triforce.lualine').session_time()
           end,
-          -- Komponen asli lualine_x
           {
             lsp_names,
             icon = '',
