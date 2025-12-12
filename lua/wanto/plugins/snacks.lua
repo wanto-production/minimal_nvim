@@ -142,8 +142,8 @@ return {
           return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ''
         end,
       },
-      explorer = { enabled = true },
-      dashboard = { enabled = true },
+      explorer = { enabled = false },
+      dashboard = { enabled = false },
       layout = {
         sidebar = {
           position = 'right',
@@ -158,9 +158,6 @@ return {
     keymap('n', '<leader>bd', function()
       Snacks.bufdelete.delete()
     end, { desc = 'Safe Delete Buffer' })
-    keymap('n', '<leader>e', function()
-      Snacks.explorer.open()
-    end, { desc = 'Toggle Explorer' })
     keymap('n', '<leader>sf', function()
       Snacks.picker.files()
     end, { desc = 'pickers files' })

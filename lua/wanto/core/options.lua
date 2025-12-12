@@ -23,6 +23,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = false
 
+vim.opt.termguicolors = true
 vim.opt.wrap = false
 vim.opt.sidescroll = 1
 vim.opt.sidescrolloff = 5

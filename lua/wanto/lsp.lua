@@ -12,6 +12,11 @@ local additional_plugins = {
     enableForWorkspaceTypeScriptVersions = true,
   },
   {
+    name = '@angular/language-server',
+    location = utils:get_pkg_path('angular-language-server', '/node_modules/@angular/language-server'),
+    enableForWorkspaceTypeScriptVersions = false,
+  },
+  {
     name = '@vue/typescript-plugin',
     location = utils:get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
     languages = { 'vue' },
@@ -20,7 +25,7 @@ local additional_plugins = {
   },
 }
 
-local lsp = { 'lua_ls', 'vtsls', 'svelte', 'taplo', 'jsonls', 'yamlls', 'astro', 'tailwindcss', 'vue_ls', 'clangd' }
+local lsp = { 'lua_ls', 'gopls', 'vtsls', 'svelte', 'taplo', 'jsonls', 'yamlls', 'astro', 'tailwindcss', 'vue_ls', 'clangd' }
 
 vim.lsp.enable(lsp)
 
@@ -40,27 +45,6 @@ vim.lsp.config['lua_ls'] = {
       },
     },
   },
-}
-
-vim.lsp.config['tailwindcss'] = {
-  on_attach = function(client, bufnr)
-    local ft = vim.bo[bufnr].filetype
-    local fname = vim.api.nvim_buf_get_name(bufnr)
-
-    -- Stop LSP untuk TS/JS yang bukan Angular component/page
-    if ft == 'typescript' or ft == 'javascript' or ft == 'typescriptreact' or ft == 'javascriptreact' then
-      if not (fname:match '%.page%.ts$' or fname:match '%.component%.ts$' or fname:match 'app%.ts$') then
-        vim.schedule(function()
-          vim.lsp.buf_detach_client(bufnr, client.id)
-        end)
-        return
-      end
-    end
-
-    -- Optional: keybindings
-    local opts = { buffer = bufnr, noremap = true, silent = true }
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-  end,
 }
 
 vim.lsp.config['vtsls'] = {

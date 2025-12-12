@@ -5,6 +5,7 @@ return {
       'yaml-language-server',
       'svelte-language-server',
       'astro-language-server',
+      'gopls',
       'vtsls',
       'taplo',
       'json-lsp',
