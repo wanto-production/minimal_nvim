@@ -32,6 +32,7 @@ return {
             highlight = 'Directory',
             text_align = 'left',
             separator = true,
+            text = '󰙅  File Explorer',
           },
           {
             filetype = 'snacks_layout_box',
