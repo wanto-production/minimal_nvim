@@ -5,6 +5,7 @@ return {
     config = function()
       require('mini.icons').mock_nvim_web_devicons()
       require('neo-tree').setup {
+        use_popups_for_input = false,
         close_if_last_window = false,
         enable_git_status = true,
         enable_diagnostics = true,
