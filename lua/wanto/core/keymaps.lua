@@ -22,7 +22,9 @@ vim.keymap.set('n', 'D', '"_D', { noremap = true })
 vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Prev Buffer' })
 vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next Buffer' })
-vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = '[T] file explorer' })
+vim.keymap.set('n', '<leader>e', function()
+  require('neo-tree.command').execute { toggle = true }
+end, { desc = '[T] file explorer' })
 vim.keymap.set('n', '<leader>xx', function()
   require('trouble').toggle { mode = 'diagnostics' }
 end, { desc = 'Diagnostics (Trouble)' })
