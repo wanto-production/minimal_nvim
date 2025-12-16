@@ -1,6 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master',
     dependencies = {
       {
         'windwp/nvim-ts-autotag',
@@ -10,9 +11,8 @@ return {
     },
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter').install(require('users.lang').treesitter)
-      require('nvim-treesitter').setup {
-        install_dir = vim.fn.stdpath 'data' .. '/site',
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = require('users.lang').treesitter,
         auto_install = true,
         highlight = {
           enable = true,
