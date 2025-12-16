@@ -5,11 +5,9 @@ return {
       'yaml-language-server',
       'svelte-language-server',
       'astro-language-server',
-      'gopls',
       'vtsls',
       'taplo',
       'json-lsp',
-      'stylua',
       'vue-language-server',
       'prettierd',
       'eslint_d',
@@ -21,6 +19,8 @@ return {
   },
 
   treesitter = {
+    'regex',
+    'bash',
     'vue',
     'angular',
     'scss',
