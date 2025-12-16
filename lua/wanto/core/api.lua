@@ -40,3 +40,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'svelte' }, -- Ganti dengan bahasa yang kamu gunakan
+  callback = function()
+    vim.treesitter.start()
+  end,
+})

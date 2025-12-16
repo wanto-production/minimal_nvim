@@ -46,8 +46,10 @@ return {
     'regex',
     'php',
     'latex',
+    'html',
     'norg',
     'typst',
+    'nix',
     'tsx',
   },
 }
