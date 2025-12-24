@@ -12,7 +12,15 @@ return {
           require('nvim-autopairs').setup {}
         end,
       },
-      { 'folke/lazydev.nvim', ft = 'lua' },
+      {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {
+          library = {
+            { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+          },
+        },
+      },
       { 'b0o/schemastore.nvim' },
       'echasnovski/mini.icons', -- ✅ Hanya mini.icons
     },

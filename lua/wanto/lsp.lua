@@ -25,7 +25,21 @@ local additional_plugins = {
   },
 }
 
-local lsp = { 'lua_ls', 'nil_ls', 'gopls', 'vtsls', 'svelte', 'taplo', 'jsonls', 'yamlls', 'astro', 'tailwindcss', 'vue_ls', 'clangd' }
+local lsp = {
+  'lua_ls',
+  'kotlin_language_server',
+  'nil_ls',
+  'gopls',
+  'vtsls',
+  'svelte',
+  'taplo',
+  'jsonls',
+  'yamlls',
+  'astro',
+  'tailwindcss',
+  'vue_ls',
+  'clangd',
+}
 
 vim.lsp.enable(lsp)
 
