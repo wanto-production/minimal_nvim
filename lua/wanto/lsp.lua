@@ -34,7 +34,8 @@ local additional_plugins = {
 local lsp_servers = {
   'lua_ls',
   'kotlin_language_server',
-  'nil_ls',
+  'angularls',
+  'nixd',
   'gopls',
   'vtsls',
   'svelte',
@@ -248,6 +249,19 @@ vim.lsp.config['svelte'] = {
     workspace = {
       didChangeWatchedFiles = {
         dynamicRegistration = false,
+      },
+    },
+  },
+}
+
+-- ============================================================================
+-- Nixd
+-- ============================================================================
+vim.lsp.config['nixd'] = {
+  settings = {
+    nixd = {
+      nixpkgs = {
+        expr = 'import <nixpkgs> {}',
       },
     },
   },
